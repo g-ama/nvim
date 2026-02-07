@@ -21,38 +21,6 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.animate",
-		version = "*",
-		config = function()
-			local animate = require("mini.animate")
-			animate.setup({
-				-- Cursor path animation
-				cursor = {
-					enable = false,
-				},
-				-- Vertical scroll animation
-				-- scroll = {
-				-- 	enable = true,
-				-- 	timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
-				-- },
-				-- Window resize animation
-				resize = {
-					enable = true,
-					timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
-				},
-				-- Window open/close animation
-				open = {
-					enable = true,
-					timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
-				},
-				close = {
-					enable = true,
-					timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
-				},
-			})
-		end,
-	},
-	{
 		"echasnovski/mini.bracketed",
 		version = "*",
 		config = function()
@@ -76,29 +44,12 @@ return {
 			-- Usage: [b/]b (buffer), [c/]c (comment), [d/]d (diagnostic), etc.
 		end,
 	},
+
 	{
-		"echasnovski/mini.notify",
-		version = "*",
-		config = function()
-			local notify = require("mini.notify")
-			notify.setup({
-				-- Notifications content
-				content = {
-					-- Format for notification message
-					format = nil,
-					-- Function to sort notifications
-					sort = nil,
-				},
-				-- Notifications window
-				window = {
-					config = {},
-					max_width_share = 0.382,
-					winblend = 25,
-				},
-			})
-			-- Set as default notify function
-			vim.notify = notify.make_notify()
-		end,
+		"chomosuke/typst-preview.nvim",
+		lazy = false, -- or ft = 'typst'
+		version = "1.*",
+		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
 	},
 	{
 		"nvim-mini/mini.icons",
@@ -122,59 +73,17 @@ return {
 			})
 
 			-- Don't call the function with (), just pass the function reference
-			vim.keymap.set("n", "<leader>pv", function()
+			vim.keymap.set("n", "<leader>ee", function()
 				files.open()
 			end, { desc = "Open file explorer" })
 
 			-- Or open at current file's directory
-			vim.keymap.set("n", "<leader>pV", function()
+			vim.keymap.set("n", "<leader>cd", function()
 				files.open(vim.api.nvim_buf_get_name(0))
 			end, { desc = "Open file explorer at current file" })
 		end,
 	},
 
-	{
-		"echasnovski/mini.visits",
-		version = "*",
-		config = function()
-			local visits = require("mini.visits")
-			visits.setup({
-				-- How to store visits data
-				store = {
-					-- Function to normalize path
-					normalize = nil,
-					-- Whether to autowrite on exit
-					autowrite = true,
-				},
-				-- Silent mode (no notifications)
-				silent = false,
-			})
-
-			-- Keymaps for visiting recent files
-			vim.keymap.set("n", "<leader>vv", function()
-				visits.select_path()
-			end, { desc = "Select recent visit" })
-
-			vim.keymap.set("n", "<leader>vl", function()
-				visits.select_label()
-			end, { desc = "Select by label" })
-
-			-- Add current file to visits
-			vim.keymap.set("n", "<leader>va", function()
-				visits.add_label()
-			end, { desc = "Add visit label" })
-
-			-- Remove current file from visits
-			vim.keymap.set("n", "<leader>vr", function()
-				visits.remove_label()
-			end, { desc = "Remove visit label" })
-
-			-- List all visits for current directory
-			vim.keymap.set("n", "<leader>vc", function()
-				visits.iterate_paths("last", vim.fn.getcwd())
-			end, { desc = "Recent visits (cwd)" })
-		end,
-	},
 	{
 		"echasnovski/mini.surround",
 		version = "*",
@@ -206,43 +115,5 @@ return {
 				respect_selection_type = true,
 			})
 		end,
-	},
-
-	-- {
-	-- 	"nvim-mini/mini.tabline",
-	-- 	version = "*",
-	-- 	config = function()
-	-- 		require("mini.tabline").setup()
-	--
-	-- 		-- Keymaps for cycling buffers with Ctrl+Tab / Ctrl+Shift+Tab
-	-- 		local map = vim.keymap.set
-	-- 		local opts = { noremap = true, silent = true }
-	-- 	end,
-	-- },
-
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		vscode = true,
-		---@type Flash.Config
-		opts = {},
-  -- stylua: ignore
-  keys = {
-    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    -- Simulate nvim-treesitter incremental selection
-    { "<c-space>", mode = { "n", "o", "x" },
-      function()
-        require("flash").treesitter({
-          actions = {
-            ["<c-space>"] = "next",
-            ["<BS>"] = "prev"
-          }
-        })
-      end, desc = "Treesitter Incremental Selection" },
-  },
 	},
 }

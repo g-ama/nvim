@@ -26,7 +26,6 @@ return {
 			end,
 		})
 
-
 		-- Mason setup
 		require("mason").setup({
 			ensure_installed = {},
@@ -133,7 +132,6 @@ return {
 				},
 			},
 
-
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<C-n>"] = cmp.mapping.select_next_item(),
@@ -147,7 +145,7 @@ return {
 				}),
 				-- Accept currently selected item. If none selected, `select` first item.
 				-- Set `select` to `false` to only confirm explicitly selected items.
-				["<Tab>"] = cmp.mapping.confirm({ select = false }),
+				["<Tab>"] = cmp.mapping.confirm({ select = true }),
 				["<CR>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()

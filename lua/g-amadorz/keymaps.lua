@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("n", "yy", '"+y')
-
+vim.keymap.set("n", "P", '"+p')
 -- Move Lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")

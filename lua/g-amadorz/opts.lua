@@ -1,15 +1,15 @@
 vim.opt.mouse = ""
 vim.opt.tabstop = 4
-vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor100"
+-- vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor"
 vim.opt.cursorcolumn = false
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.opt.wrap = false
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.swapfile = false
 vim.opt.termguicolors = true
 vim.opt.backup = false
@@ -22,7 +22,7 @@ vim.opt.scrolloff = 4
 vim.opt.signcolumn = "yes"
 vim.opt.foldopen = "mark,percent,quickfix,search,tag,undo"
 vim.opt.sidescrolloff = 50
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("torte")
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "c",
 	callback = function()
@@ -41,10 +41,42 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+---@type rainbow_delimiters.config
+vim.g.rainbow_delimiters = {
+	strategy = {
+		[""] = "rainbow-delimiters.strategy.global",
+		vim = "rainbow-delimiters.strategy.local",
+	},
+	query = {
+		[""] = "rainbow-delimiters",
+		lua = "rainbow-blocks",
+	},
+	priority = {
+		[""] = 210,
+		lua = 210,
+		c = 210,
+		cpp = 210,
+		rust = 210,
+		typst = 210,
+		go = 210,
+	},
+	highlight = {
+		"RainbowDelimiterRed",
+		"RainbowDelimiterYellow",
+		"RainbowDelimiterBlue",
+		"RainbowDelimiterOrange",
+		"RainbowDelimiterGreen",
+		"RainbowDelimiterViolet",
+		"RainbowDelimiterCyan",
+	},
+}
+
 -- Code Forces Template
 vim.keymap.set("n", "<leader>cf", function()
 	local template = {
 		'#include "iostream"',
+		"#include <vector>",
+		"using ll = long long;",
 		"using namespace std;",
 		"void solve() {}",
 		"int main() {",
