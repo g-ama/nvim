@@ -105,18 +105,18 @@ return {
 			},
 		})
 
-		vim.api.nvim_create_autocmd("CursorHold", {
-			callback = function()
-				local opts = {
-					focusable = false,
-					close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-					border = "rounded",
-					source = "always",
-					prefix = " ",
-				}
-				vim.diagnostic.open_float(nil, opts)
-			end,
-		})
+		-- vim.api.nvim_create_autocmd("CursorHold", {
+		-- 	callback = function()
+		-- 		local opts = {
+		-- 			focusable = false,
+		-- 			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+		-- 			border = "rounded",
+		-- 			source = "always",
+		-- 			prefix = " ",
+		-- 		}
+		-- 		vim.diagnostic.open_float(nil, opts)
+		-- 	end,
+		-- })
 
 		vim.opt.updatetime = 500
 
@@ -146,26 +146,6 @@ return {
 				-- Accept currently selected item. If none selected, `select` first item.
 				-- Set `select` to `false` to only confirm explicitly selected items.
 				["<Tab>"] = cmp.mapping.confirm({ select = true }),
-				["<CR>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					else
-						fallback()
-					end
-				end, {
-					"i",
-					"s",
-				}),
-				["<S-CR>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					else
-						fallback()
-					end
-				end, {
-					"i",
-					"s",
-				}),
 			},
 
 			formatting = {

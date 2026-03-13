@@ -1,25 +1,23 @@
 return {
-	{
-		"echasnovski/mini.pick",
-		version = "*",
-		config = function()
-			local pick = require("mini.pick")
-			pick.setup({
-				delay = {
-					async = 10,
-					busy = 50,
-				},
-			})
-			vim.keymap.set("n", "<leader>ff", pick.builtin.files, { desc = "Find files" })
-			vim.keymap.set("n", "<leader>fg", pick.builtin.grep_live, { desc = "Live grep" })
-			vim.keymap.set("n", "<leader>fb", pick.builtin.buffers, { desc = "Find buffers" })
-			vim.keymap.set("n", "<leader>fh", pick.builtin.help, { desc = "Find help" })
-			vim.keymap.set("n", "<leader>fr", pick.builtin.resume, { desc = "Resume picker" })
-			vim.keymap.set("n", "<leader>f/", function()
-				pick.builtin.grep({ pattern = vim.fn.input("Grep: ") })
-			end, { desc = "Grep pattern" })
-		end,
-	},
+	-- {
+	-- 	"echasnovski/mini.pick",
+	-- 	version = "*",
+	-- 	config = function()
+	-- 		local pick = require("mini.pick")
+	-- 		pick.setup({
+	-- 			delay = {
+	-- 				async = 10,
+	-- 				busy = 50,
+	-- 			},
+	-- 		})
+	-- 		vim.keymap.set("n", "<leader>ff", pick.builtin.files, { desc = "Find files" })
+	-- 		vim.keymap.set("n", "<leader>fd", pick.builtin.grep_live, { desc = "Live grep" })
+	-- 		vim.keymap.set("n", "<leader>fb", pick.builtin.buffers, { desc = "Find buffers" })
+	-- 		vim.keymap.set("n", "<leader>f/", function()
+	-- 			pick.builtin.grep({ pattern = vim.fn.input("Grep: ") })
+	-- 		end, { desc = "Grep pattern" })
+	-- 	end,
+	-- },
 	{
 		"echasnovski/mini.bracketed",
 		version = "*",
@@ -48,7 +46,6 @@ return {
 	{
 		"chomosuke/typst-preview.nvim",
 		lazy = false, -- or ft = 'typst'
-		version = "1.*",
 		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
 	},
 	{
@@ -73,7 +70,7 @@ return {
 			})
 
 			-- Don't call the function with (), just pass the function reference
-			vim.keymap.set("n", "<leader>ee", function()
+			vim.keymap.set("n", "<leader>pv", function()
 				files.open()
 			end, { desc = "Open file explorer" })
 

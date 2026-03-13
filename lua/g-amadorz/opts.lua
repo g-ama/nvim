@@ -9,7 +9,7 @@ vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.opt.wrap = false
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.termguicolors = true
 vim.opt.backup = false
@@ -22,7 +22,7 @@ vim.opt.scrolloff = 4
 vim.opt.signcolumn = "yes"
 vim.opt.foldopen = "mark,percent,quickfix,search,tag,undo"
 vim.opt.sidescrolloff = 50
-vim.cmd.colorscheme("torte")
+vim.cmd.colorscheme("moonfly")
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "c",
 	callback = function()
