@@ -22,7 +22,7 @@ vim.opt.scrolloff = 4
 vim.opt.signcolumn = "yes"
 vim.opt.foldopen = "mark,percent,quickfix,search,tag,undo"
 vim.opt.sidescrolloff = 50
-vim.cmd.colorscheme("moonfly")
+vim.cmd.colorscheme("tokyonight")
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "c",
 	callback = function()

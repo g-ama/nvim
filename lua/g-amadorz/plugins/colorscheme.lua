@@ -1,22 +1,26 @@
 return {
-
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
-		opts = {},
+		opts = {
+			-- use the night style
+			style = "moon",
+			-- disable italic for functions (fixed true -> false)
+			styles = {
+				functions = { italic = true },
+				keywords = { italic = true },
+			},
+			transparent = true,
+		},
 	},
-
-	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 
 	{
-		"Shatur/neovim-ayu",
+		"rose-pine/neovim",
+		name = "rose-pine",
 		config = function()
-			require("ayu").setup({
-				mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-				terminal = true, -- Set to `false` to let terminal manage its own colors.
-				overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-			})
+			vim.cmd("colorscheme rose-pine")
 		end,
 	},
+	{ "datsfilipe/vesper.nvim" },
 }

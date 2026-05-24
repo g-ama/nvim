@@ -7,6 +7,8 @@ vim.keymap.set("n", "P", '"+p')
 -- Move Lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+vim.keymap.set("n", "<leader>br", ":colorscheme delek")
+vim.keymap.set("n", "<leader>dr", ":colorscheme ayu")
 
 -- Navigation
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
